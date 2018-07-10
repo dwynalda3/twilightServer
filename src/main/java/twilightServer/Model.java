@@ -112,21 +112,16 @@ public class Model {
 		createNeighbors(35,36);
 	}
 	public void PlayerSetup(int numPlayers) {
-		//probably will be passed by GUI
-		Color color1 = Color.RED;
-		Color color2 = Color.PURPLE;
-		Color color3 = Color.GREEN;
-		Color color4 = Color.YELLOW;
-		//these will probably be Race class.
-		String race1 = "Sardak N'orr";
-		String race2 = "Ghosts of Creuss";
-		String race3 = "Naalu Collective";
-		String race4 = "Barony of Letnev";
+
 		//end assumption
 		PlanetSetup(numPlayers);
-		for(Player p: players) {
-			p = new Player();
+		int i = 0;
+		for(i=0;i<numPlayers;i++) {
+			Player p = new Player();
+			p.setSystems(playerSystems.get(i));
+			players.add(p);
 		}
+		
 	}
 	private void PlanetSetup(int numPlayers){
 		if(numPlayers != 3 && numPlayers != 4) {
@@ -326,9 +321,12 @@ public class Model {
 	public ArrayList<ArrayList<Space>> getPlayerSystems() {
 		return playerSystems;
 	}
-	
-	
-
+	public Player getPlayer(int number) {
+		return players.get(number);
+	}
+	public void setPlayer(int number, Player p) {
+		players.set(number, p);
+	}
 
 }
 

@@ -16,21 +16,20 @@ public class BaseController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/start")
-	public void search(@RequestParam(value = "numPlayers", defaultValue = "4") final int numPlayers) {	
-		if(++counter==1)
+	public void start(@RequestParam(value = "numPlayers", defaultValue = "4") final int numPlayers) {	
+		System.out.println(counter);
+		if(counter==0) {
 			model.PlayerSetup(numPlayers);
-		String output = "" + counter;
-		System.out.println(output);
+		}
 	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/create/{color}/{race}")
-	public PlayerObject submit(@PathVariable String color, @PathVariable String race) {
-		
-		String output = color + " and " + race;
-		System.out.println(color);
-		PlayerObject p = new PlayerObject(++counter, color, race);
-		return p;
+	public Player create(@PathVariable String color, @PathVariable String race) {
+		int id = ++counter;
+		Color c = Color.valueOf(color.toUpperCase());
+		model.setPlayer(counter-1, new Player(counter, c, race, model.getPlayerSystems().get(counter-1)));
+		return model.getPlayer(counter-1);
 	}
 	/*
 	@RequestMapping(value = "/{name}", method = RequestMethod.GET)

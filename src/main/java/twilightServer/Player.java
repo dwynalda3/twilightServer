@@ -3,12 +3,22 @@ package twilightServer;
 import java.util.ArrayList;
 
 public class Player {
+	int id;
 	Color color;
 	String race;
 	ArrayList<Space> systems;
 	
 	public Player() {
 	}
+
+	public Player(int id, Color color, String race, ArrayList<Space> systems) {
+		this.id = id;
+		this.color = color;
+		this.race = race;
+		this.systems = systems;
+	}
+
+
 
 	public Color getColor() {
 		return color;
@@ -32,6 +42,14 @@ public class Player {
 
 	public void setSystems(ArrayList<Space> systems) {
 		this.systems = systems;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }
