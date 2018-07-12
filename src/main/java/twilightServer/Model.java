@@ -290,8 +290,12 @@ public class Model {
 		this.nonPlanetSystems.add(tempSystem);
 		tempSystem = new Space(Hazard.SUPERNOVA);
 		this.nonPlanetSystems.add(tempSystem);
+		tempSystem = new Space(Hazard.ALPHA);
+		this.nonPlanetSystems.add(tempSystem);
+		tempSystem = new Space(Hazard.BETA);
+		this.nonPlanetSystems.add(tempSystem);
 		tempSystem = new Space(Hazard.EMPTY);
-		for(int i =0; i<7; i++) {
+		for(int i =0; i<5; i++) {
 			this.nonPlanetSystems.add(tempSystem);
 		}		
 	}
@@ -327,6 +331,7 @@ public class Model {
 	public void setPlayer(int number, Player p) {
 		players.set(number, p);
 	}
+	
 
 }
 

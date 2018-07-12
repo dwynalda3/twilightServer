@@ -1,5 +1,9 @@
 package twilightServer;
 
-public class Race {
-
+public interface Race {
+	Space getHomeSystem();
+	
+	IUnit[] getShips();
+	
+	
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Space {
+	private String name;
 	private int numPlanets;
     private List<Planet> planets = new ArrayList<Planet>();
     private List<Space> neighbors = new ArrayList<Space>();
@@ -14,19 +15,25 @@ public class Space {
 	public Space(Hazard type) {
 		numPlanets=0;
 		this.type = type;
+		name = this.toString();
 	}
 	public Space(Planet planet, Hazard type) {
 		this.planets.add(planet);
 		numPlanets=planets.size();
 		this.type = type;
+		name = this.toString();
 	}
 	public Space(Planet planet1, Planet planet2, Hazard type) {
 		this.planets.add(planet1);
 		this.planets.add(planet2);
 		numPlanets=planets.size();
 		this.type = type;
+		name = this.toString();
 	}
 
+	public String getName() {
+		return name;
+	}
 	public List<Planet> getPlanets() {
 		return planets;
 	}
@@ -64,5 +71,5 @@ public class Space {
 			return getType().toString();
 		}
 	}
-
+	
 }
