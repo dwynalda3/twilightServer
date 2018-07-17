@@ -10,7 +10,7 @@ public class Model {
 	private ArrayList<Space> nonPlanetSystems;
 	private ArrayList<Space> board;
 	private ArrayList<Planet> planets;
-	private ArrayList<ArrayList<Space>> playerSystems = new ArrayList<ArrayList<Space>>();
+	public ArrayList<ArrayList<Space>> playerSystems = new ArrayList<ArrayList<Space>>();
 	private ArrayList<Player> players = new ArrayList<Player>() ;
 	
 	public Model() {

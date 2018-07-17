@@ -16,15 +16,17 @@ public class BaseController {
 	Model model;
 	private Space[] systems = new Space[37];
 	private int numPlayers;
-	
+
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/start")
 	public Space[] start(@RequestParam(value = "numPlayers", defaultValue = "4") final int numPlayers) {
-		if(model == null) {
-			model = new Model();
-			this.numPlayers = numPlayers;
-			model.PlayerSetup(numPlayers);
-			systems[18] = new Space(model.getPlanets().get(0), Hazard.EMPTY);
+		if(counter<numPlayers) {
+			if(model == null) {
+				model = new Model();
+				this.numPlayers = numPlayers;
+				model.PlayerSetup(numPlayers);
+				systems[18] = new Space(model.getPlanets().get(0), Hazard.EMPTY);
+			}
 		}
 		return systems;
 	}
@@ -32,39 +34,54 @@ public class BaseController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/create/{color}/{race}")
 	public Player create(@PathVariable String color, @PathVariable String race) {
+		Color c = Color.valueOf(color.toUpperCase());
+		Race r = createRace(race, c);
+		for(int i = 0; i<numPlayers; i++) {
+			if(model.getPlayer(i).getColor() != null) {
+				if (model.getPlayer(i).getRace().getHomeSystem().getOwner().equals(r.getHomeSystem().getOwner())) {
+					return model.getPlayer(i);
+				}
+			}
+		}
 		if(counter<numPlayers) {
 			counter++;
 			System.out.println(counter);
+			assignHomeSystem(counter, r.getHomeSystem());
+			model.setPlayer(counter-1, new Player(counter, c, r, model.getPlayerSystems().get(counter-1)));
+			return model.getPlayer(counter-1);
 		}
-		Color c = Color.valueOf(color.toUpperCase());
-		Race r = createRace(race, c);
-		assignHomeSystem(counter, r.getHomeSystem());
-		model.setPlayer(counter-1, new Player(counter, c, r, model.getPlayerSystems().get(counter-1)));
-		return model.getPlayer(counter-1);
+		return null;
 	}
-	
+
 	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/assign/{system}/{index}")
-	public Space[] assign(@PathVariable String system, @PathVariable int index) {
-		if(systems[index] !=null) {
-			return systems;
-		}
-		for(ArrayList<Space> list: model.getPlayerSystems()) {
-			for(Space s : list) {
+	@GetMapping("/assign/{system}/{index}/{playerNum}")
+	public Space[] assign(@PathVariable String system, @PathVariable int index, @PathVariable int playerNum) {
+		if(counter<numPlayers) {
+			if(systems[index] !=null) {
+				return systems;
+			}
+			int i =0;
+			int placedSystem = -1;
+			for(Space s : model.getPlayerSystems().get(playerNum-1)) {
 				if(s.toString().equals(system)) {
-					systems[index] = s;				
+					systems[index] = s;	
+					placedSystem = i;
 				}
+				i++;
+			}
+			if(placedSystem != -1) {
+				model.playerSystems.get(playerNum-1).remove(placedSystem);
 			}
 		}
 		return systems;
 	}
-	
+
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/refresh")
 	public Space[] refresh() {
 		return systems;
 	}
-	
+
 	private Race createRace(String race, Color color) {
 		if(race.equals("Barony"))
 			return new Barony(color);
@@ -80,12 +97,16 @@ public class BaseController {
 			return new Naalu(color);
 		}else if(race.equals("Sardakk")) {
 			return new Sardakk(color);
+		}else if(race.equals("Universities")) {
+			return new Universities(color);
+		}else if(race.equals("Xxcha")) {
+			return new Xxcha(color);
 		}
 		else {
 			return new Barony(color);
 		}
 	}
-	
+
 	private void assignHomeSystem(int playerNum, Space homeSystem) {
 		if(numPlayers == 4) {
 			if(playerNum == 1) {
@@ -98,7 +119,7 @@ public class BaseController {
 				systems[32] = homeSystem;
 			}
 		}
-		
+
 	}
 
 	/*

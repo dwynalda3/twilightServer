@@ -53,4 +53,8 @@ public class Player {
 		this.id = id;
 	}
 	
+	public String toString() {
+		return this.id + ", " + this.color + ", " + this.race;
+	}
+	
 }

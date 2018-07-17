@@ -7,8 +7,11 @@ twilightServer\Infantry.class
 twilightServer\TechReducer.class
 twilightServer\Player.class
 twilightServer\IUnit.class
+twilightServer\Sardakk.class
 twilightServer\Hazard.class
 twilightServer\Dreadnought.class
+twilightServer\Xxcha.class
+twilightServer\Universities.class
 twilightServer\Race.class
 twilightServer\Application.class
 twilightServer\Mentak.class
