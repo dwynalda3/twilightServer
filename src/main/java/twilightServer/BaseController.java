@@ -78,6 +78,8 @@ public class BaseController {
 			return new L1Z1X(color);
 		}else if(race.equals("Naalu")) {
 			return new Naalu(color);
+		}else if(race.equals("Sardakk")) {
+			return new Sardakk(color);
 		}
 		else {
 			return new Barony(color);
