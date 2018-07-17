@@ -76,6 +76,8 @@ public class BaseController {
 			return new Mentak(color);
 		}else if(race.equals("L1Z1X")) {
 			return new L1Z1X(color);
+		}else if(race.equals("Naalu")) {
+			return new Naalu(color);
 		}
 		else {
 			return new Barony(color);
