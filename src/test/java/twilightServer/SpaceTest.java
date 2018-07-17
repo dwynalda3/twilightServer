@@ -24,7 +24,5 @@ public class SpaceTest {
 		assertEquals(3,LirtaIV.getInfluence());
 		assertEquals(PlanetType.HAZARDOUS,Bereg.getType());
 		assertEquals(PlanetType.HAZARDOUS,LirtaIV.getType());
-		Model m = new Model();
-		m.PlayerSetup(4);
 	}
 }

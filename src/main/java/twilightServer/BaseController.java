@@ -34,12 +34,15 @@ public class BaseController {
 	public Player create(@PathVariable String color, @PathVariable String race) {
 		if(counter<numPlayers) {
 			counter++;
+			System.out.println(counter);
 		}
 		Color c = Color.valueOf(color.toUpperCase());
 		Race r = createRace(race, c);
+		assignHomeSystem(counter, r.getHomeSystem());
 		model.setPlayer(counter-1, new Player(counter, c, r, model.getPlayerSystems().get(counter-1)));
 		return model.getPlayer(counter-1);
 	}
+	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/assign/{system}/{index}")
 	public Space[] assign(@PathVariable String system, @PathVariable int index) {
@@ -65,10 +68,31 @@ public class BaseController {
 	private Race createRace(String race, Color color) {
 		if(race.equals("Barony"))
 			return new Barony(color);
+		else if(race.equals("Emirates")) {
+			return new Emirates(color);
+		}else if(race.equals("Sol")) {
+			return new Sol(color);
+		}
 		else {
 			return new Barony(color);
 		}
 	}
+	
+	private void assignHomeSystem(int playerNum, Space homeSystem) {
+		if(numPlayers == 4) {
+			if(playerNum == 1) {
+				systems[4] = homeSystem;
+			}else if(playerNum == 2) {
+				systems[8] = homeSystem;
+			}else if(playerNum == 3) {
+				systems[28] = homeSystem;
+			}else if(playerNum == 4) {
+				systems[32] = homeSystem;
+			}
+		}
+		
+	}
+
 	/*
 	@RequestMapping(value = "/{name}", method = RequestMethod.GET)
 	public String welcomeName(@PathVariable String name, ModelMap model) {

@@ -7,6 +7,10 @@ public class Cruiser implements IShip {
 	private int capacity = 0;
 	private int cost = 2;
 	
+	public Cruiser(Color color) {
+		this.owner = color;
+	}
+
 	@Override
 	public String type() {
 		return "Cruiser";

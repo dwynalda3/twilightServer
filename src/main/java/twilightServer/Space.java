@@ -11,6 +11,7 @@ public class Space {
     private List<IShip> ships = new ArrayList<IShip>();
     private Hazard type;
 	private Color owner;
+	private boolean home = false;
 	
 	public Space(Hazard type) {
 		numPlanets=0;
@@ -31,6 +32,14 @@ public class Space {
 		name = this.toString();
 	}
 
+	public Space(Planet planet1, Planet planet2, Planet planet3, Hazard type) {//for Emirates of Hacan 
+		this.planets.add(planet1);
+		this.planets.add(planet2);
+		this.planets.add(planet3);
+		numPlanets=planets.size();
+		this.type = type;
+		name = this.toString();
+	}
 	public String getName() {
 		return name;
 	}
@@ -67,9 +76,17 @@ public class Space {
 					" and " + getPlanets().get(1).getName();
 		}else if(getNumPlanets()==1) {
 			return getPlanets().get(0).getName();
+		}else if(getNumPlanets()==3) {
+			return getPlanets().get(0).getName() +", " + getPlanets().get(1).getName() + ", and " + getPlanets().get(2).getName();
 		}else {
 			return getType().toString();
 		}
+	}
+	public boolean isHome() {
+		return home;
+	}
+	public void setHome(boolean home) {
+		this.home = home;
 	}
 	
 }
