@@ -1,5 +1,6 @@
 twilightServer\Model.class
 twilightServer\Spacedock.class
+twilightServer\Emirates.class
 twilightServer\PlanetType.class
 twilightServer\Barony.class
 twilightServer\Infantry.class
@@ -10,12 +11,16 @@ twilightServer\Hazard.class
 twilightServer\Dreadnought.class
 twilightServer\Race.class
 twilightServer\Application.class
+twilightServer\Mentak.class
 twilightServer\WarSun.class
 twilightServer\PDS.class
 twilightServer\Fighter.class
+twilightServer\Naalu.class
 twilightServer\Cruiser.class
 twilightServer\PlayerObject.class
+twilightServer\L1Z1X.class
 twilightServer\Color.class
+twilightServer\Sol.class
 twilightServer\Destroyer.class
 twilightServer\Carrier.class
 twilightServer\Planet.class
