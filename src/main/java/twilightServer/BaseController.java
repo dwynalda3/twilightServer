@@ -72,6 +72,10 @@ public class BaseController {
 			return new Emirates(color);
 		}else if(race.equals("Sol")) {
 			return new Sol(color);
+		}else if(race.equals("Mentak")) {
+			return new Mentak(color);
+		}else if(race.equals("L1Z1X")) {
+			return new L1Z1X(color);
 		}
 		else {
 			return new Barony(color);
