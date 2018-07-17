@@ -6,6 +6,10 @@ public class Fighter implements IShip{
 	private int movement = 0;
 	private int cost = 1;
 	
+	public Fighter(Color color) {
+		this.owner = color;
+	}
+
 	@Override
 	public String type() {
 		return "Fighter";

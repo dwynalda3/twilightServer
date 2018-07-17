@@ -7,6 +7,10 @@ public class Destroyer implements IShip {
 	private int capacity = 0;
 	private int cost = 1;
 	
+	public Destroyer(Color color) {
+		this.owner = color;
+	}
+
 	@Override
 	public String type() {
 		return "Destroyer";

@@ -12,6 +12,10 @@ public class Spacedock implements IUnit {
 		this.planet = planet;
 	}
 
+	public Spacedock(Planet arcPrime) {
+		this.planet = planet;
+	}
+
 	@Override
 	public String type() {
 		return "Spacedock";

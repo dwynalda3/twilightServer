@@ -1,8 +1,6 @@
 package twilightServer;
 
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +15,7 @@ public class BaseController {
 	private static int counter = 0;
 	Model model;
 	private Space[] systems = new Space[37];
-	private static int numPlayers;
+	private int numPlayers;
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/start")
@@ -35,10 +33,11 @@ public class BaseController {
 	@GetMapping("/create/{color}/{race}")
 	public Player create(@PathVariable String color, @PathVariable String race) {
 		if(counter<numPlayers) {
-			int id = ++counter;
+			counter++;
 		}
 		Color c = Color.valueOf(color.toUpperCase());
-		model.setPlayer(counter-1, new Player(counter, c, race, model.getPlayerSystems().get(counter-1)));
+		Race r = createRace(race, c);
+		model.setPlayer(counter-1, new Player(counter, c, r, model.getPlayerSystems().get(counter-1)));
 		return model.getPlayer(counter-1);
 	}
 	@CrossOrigin(origins = "http://localhost:4200")
@@ -61,6 +60,14 @@ public class BaseController {
 	@GetMapping("/refresh")
 	public Space[] refresh() {
 		return systems;
+	}
+	
+	private Race createRace(String race, Color color) {
+		if(race.equals("Barony"))
+			return new Barony(color);
+		else {
+			return new Barony(color);
+		}
 	}
 	/*
 	@RequestMapping(value = "/{name}", method = RequestMethod.GET)

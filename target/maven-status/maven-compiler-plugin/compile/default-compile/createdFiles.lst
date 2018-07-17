@@ -5,6 +5,7 @@ twilightServer\Fighter.class
 twilightServer\Spacedock.class
 twilightServer\Cruiser.class
 twilightServer\PlanetType.class
+twilightServer\Barony.class
 twilightServer\Infantry.class
 twilightServer\PlayerObject.class
 twilightServer\TechReducer.class

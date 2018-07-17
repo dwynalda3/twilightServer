@@ -5,16 +5,17 @@ import java.util.ArrayList;
 public class Player {
 	int id;
 	Color color;
-	String race;
+	Race race;
 	ArrayList<Space> systems;
+	Space homeSystem;
 	
 	public Player() {
 	}
 
-	public Player(int id, Color color, String race, ArrayList<Space> systems) {
+	public Player(int id, Color color, Race r, ArrayList<Space> systems) {
 		this.id = id;
 		this.color = color;
-		this.race = race;
+		this.race = r;
 		this.systems = systems;
 	}
 
@@ -28,11 +29,11 @@ public class Player {
 		this.color = color;
 	}
 
-	public String getRace() {
+	public Race getRace() {
 		return race;
 	}
 
-	public void setRace(String race) {
+	public void setRace(Race race) {
 		this.race = race;
 	}
 

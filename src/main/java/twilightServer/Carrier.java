@@ -7,6 +7,10 @@ public class Carrier implements IShip {
 	private int capacity = 4;
 	private int cost = 3;
 	
+	public Carrier(Color color) {
+		this.owner = color;
+	}
+
 	@Override
 	public String type() {
 		return "Carrier";

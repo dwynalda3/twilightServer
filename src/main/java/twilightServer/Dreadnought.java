@@ -7,6 +7,10 @@ public class Dreadnought implements IShip {
 	private int capacity = 1;
 	private int cost = 5;
 	
+	public Dreadnought(Color color) {
+		this.owner = color;
+	}
+
 	@Override
 	public String type() {
 		return "Dreadnought";

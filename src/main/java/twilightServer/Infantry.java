@@ -12,6 +12,10 @@ public class Infantry implements IUnit {
 		this.planet = planet;
 	}
 
+	public Infantry(Planet planet) {
+		this.planet=planet;
+	}
+
 	public Color getOwner() {
 		return owner;
 	}
@@ -48,5 +52,14 @@ public class Infantry implements IUnit {
 	public void setProduction(int production) {
 		this.production = production;
 	}
+
+	public Planet getPlanet() {
+		return planet;
+	}
+
+	public void setPlanet(Planet planet) {
+		this.planet = planet;
+	}
+	
 	
 }

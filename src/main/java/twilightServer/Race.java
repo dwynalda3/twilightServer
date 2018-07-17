@@ -1,9 +1,9 @@
 package twilightServer;
 
+import java.util.ArrayList;
+
 public interface Race {
 	Space getHomeSystem();
 	
-	IUnit[] getShips();
-	
-	
+	ArrayList<IUnit> getShips();
 }
