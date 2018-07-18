@@ -16,6 +16,7 @@ public class BaseController {
 	Model model;
 	private Space[] systems = new Space[37];
 	private int numPlayers;
+	private State state = State.SETUP;
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/start")
@@ -40,6 +41,9 @@ public class BaseController {
 			if(model.getPlayer(i).getColor() != null) {
 				if (model.getPlayer(i).getRace().getHomeSystem().getOwner().equals(r.getHomeSystem().getOwner())) {
 					return model.getPlayer(i);
+				}else if(model.getPlayer(i).getRace().getHomeSystem().toString().equals(r.getHomeSystem().toString()) || model.getPlayer(i).color.equals(c)) {
+					System.out.println(r + ", " + c);
+					return null;
 				}
 			}
 		}
@@ -75,13 +79,54 @@ public class BaseController {
 		}
 		return systems;
 	}
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/viewSystem/{index}")
+	public Space create(@PathVariable int index) {
+		return model.getBoard().get(index);
+	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/refresh")
 	public Space[] refresh() {
+		boolean finishedSetup = true;
+		for(Space s : systems) {
+			if(s == null) {
+				finishedSetup = false;
+			}
+		}
+		if(finishedSetup == true) {
+			ArrayList<Space> board = new ArrayList<Space>();
+			for (Space s : systems) {
+				board.add(s);
+			}
+			model.SystemSetup(board);
+		}
 		return systems;
 	}
-
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/getState")
+	public State getState() {
+		return this.state;
+	}
+	/*
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/setBoard")
+	public void setBoard() {
+		ArrayList<Space> board = new ArrayList<Space>();
+		for(ArrayList<Space> list : model.getPlayerSystems()) {
+			for(Space s : list) {
+				board.add(s);
+			}
+		}
+		for(int i=0; i<5;i++) {
+			board.add(new Space(Hazard.EMPTY));
+		}
+		for(int i=0;i<board.size();i++) {
+			systems[i]= board.get(i);
+		}
+		model.SystemSetup(board);
+		}
+*/
 	private Race createRace(String race, Color color) {
 		if(race.equals("Barony"))
 			return new Barony(color);

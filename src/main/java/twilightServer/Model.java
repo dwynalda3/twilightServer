@@ -18,7 +18,7 @@ public class Model {
 	public void SystemSetup(ArrayList<Space> systems) {
 		board = systems;
 		if(systems.size()!=37) {
-			System.out.println("Mecatol Rex not added");
+			//System.out.println("Mecatol Rex not added");
 		}
 		createNeighbors(0,1);
 		createNeighbors(0,4);
@@ -52,11 +52,11 @@ public class Model {
 		createNeighbors(10,16);
 		createNeighbors(10,17);
 		createNeighbors(11,12);
+		createNeighbors(11,17);
 		createNeighbors(11,18);
-		createNeighbors(11,19);
 		createNeighbors(12,13);
+		createNeighbors(12,18);
 		createNeighbors(12,19);
-		createNeighbors(12,20);
 		createNeighbors(13,14);
 		createNeighbors(13,19);
 		createNeighbors(13,20);
@@ -112,8 +112,6 @@ public class Model {
 		createNeighbors(35,36);
 	}
 	public void PlayerSetup(int numPlayers) {
-
-		//end assumption
 		PlanetSetup(numPlayers);
 		int i = 0;
 		for(i=0;i<numPlayers;i++) {
@@ -134,7 +132,7 @@ public class Model {
 		createPlanetSystems();
 		createNonPlanetSystems();
 		shuffleSystems(numPlayers);
-		displaySystems();
+		//displaySystems();
 	}
 	public ArrayList<Planet> getPlanets() {
 		return planets;
@@ -283,6 +281,7 @@ public class Model {
 		Space tempSystem;
 		tempSystem = new Space(Hazard.ASTEROIDFIELD);
 		this.nonPlanetSystems.add(tempSystem);
+		tempSystem = new Space(Hazard.ASTEROIDFIELD);
 		this.nonPlanetSystems.add(tempSystem);
 		tempSystem = new Space(Hazard.NEBULA);
 		this.nonPlanetSystems.add(tempSystem);
@@ -294,8 +293,8 @@ public class Model {
 		this.nonPlanetSystems.add(tempSystem);
 		tempSystem = new Space(Hazard.BETA);
 		this.nonPlanetSystems.add(tempSystem);
-		tempSystem = new Space(Hazard.EMPTY);
 		for(int i =0; i<5; i++) {
+			tempSystem = new Space(Hazard.EMPTY);
 			this.nonPlanetSystems.add(tempSystem);
 		}		
 	}
@@ -316,6 +315,8 @@ public class Model {
 		}
 	}
 	private void createNeighbors(int index1, int index2) {
+		if(index1 == 17 || index2 == 17)
+		System.out.println(board.get(index1) + " + " + board.get(index2));
 		board.get(index1).addNeighbor(board.get(index2));
 		board.get(index2).addNeighbor(board.get(index1));
 	}
@@ -327,9 +328,6 @@ public class Model {
 	}
 	public Player getPlayer(int number) {
 		return players.get(number);
-	}
-	public void setPlayer(int number, Player p) {
-		players.set(number, p);
 	}
 	
 
