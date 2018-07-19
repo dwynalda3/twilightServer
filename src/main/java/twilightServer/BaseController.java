@@ -60,7 +60,6 @@ public class BaseController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/assign/{system}/{index}/{playerNum}")
 	public Space[] assign(@PathVariable String system, @PathVariable int index, @PathVariable int playerNum) {
-		System.out.println(state.equals(State.SETUP));
 		if(state.equals(State.SETUP)) {
 			if(systems[index] !=null) {
 				return systems;
@@ -117,6 +116,7 @@ public class BaseController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/setBoard")
 	public void setBoard() {
+		Barony barony =new Barony(Color.BLACK);
 		ArrayList<Space> board = new ArrayList<Space>();
 		for(ArrayList<Space> list : model.getPlayerSystems()) {
 			for(Space s : list) {
@@ -126,6 +126,7 @@ public class BaseController {
 		for(int i=0; i<5;i++) {
 			board.add(new Space(Hazard.EMPTY));
 		}
+		board.set(36, barony.getHomeSystem());
 		for(int i=0;i<board.size();i++) {
 			systems[i]= board.get(i);
 		}

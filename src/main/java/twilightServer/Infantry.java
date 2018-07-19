@@ -15,15 +15,9 @@ public class Infantry implements IUnit {
 	}
 
 	@Override
-	public String type() {
+	public String getType() {
 		return type;
 	}
-
-	@Override
-	public Color color() {
-		return owner;
-	}
-
 
 	public int getCost() {
 		return cost;

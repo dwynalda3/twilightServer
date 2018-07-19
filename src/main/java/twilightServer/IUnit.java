@@ -2,9 +2,9 @@ package twilightServer;
 
 public interface IUnit {	
 	
-	String type();
+	String getType();
 	
-	Color color();
+	Color getOwner();
 	
 	int getCombat();
 

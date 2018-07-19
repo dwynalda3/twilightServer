@@ -12,12 +12,12 @@ public class Fighter implements IShip{
 	}
 
 	@Override
-	public String type() {
+	public String getType() {
 		return type;
 	}
 
 	@Override
-	public Color color() {
+	public Color getOwner() {
 		return owner;
 	}
 

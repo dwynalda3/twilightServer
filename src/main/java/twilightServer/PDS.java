@@ -25,12 +25,12 @@ public class PDS implements IUnit{
 	}
 
 	@Override
-	public String type() {
+	public String getType() {
 		return type;
 	}
 
 	@Override
-	public Color color() {
+	public Color getOwner() {
 		return owner;
 	}
 
