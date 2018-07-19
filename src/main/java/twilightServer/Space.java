@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @JsonIgnoreProperties(value = { "neighbors" })
 public class Space {
 	private String name;
 	private int numPlanets;
     private List<Planet> planets = new ArrayList<Planet>();
     private List<Space> neighbors = new ArrayList<Space>();
+    private List<Integer> neighborLocations = new ArrayList<Integer>();
     private List<IShip> ships = new ArrayList<IShip>();
     private Hazard type;
 	private Color owner;
@@ -71,6 +73,12 @@ public class Space {
 	}
 	public void addNeighbor(Space neighbor) {
 		this.neighbors.add(neighbor);
+	}
+	public void addNeighborLocation(Integer index) {
+		this.neighborLocations.add(index);
+	}
+	public List<Integer> getNeighborLocations() {
+		return neighborLocations;
 	}
 	public String toString() {
 		if(getNumPlanets()==2) {

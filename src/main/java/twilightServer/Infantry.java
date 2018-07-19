@@ -1,6 +1,7 @@
 package twilightServer;
 
 public class Infantry implements IUnit {
+	private String type = "Infantry";
 	private Color owner;
 	private int combat = 8;
 	private int cost = 1;
@@ -15,7 +16,7 @@ public class Infantry implements IUnit {
 
 	@Override
 	public String type() {
-		return "Infantry";
+		return type;
 	}
 
 	@Override

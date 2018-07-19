@@ -60,7 +60,8 @@ public class BaseController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/assign/{system}/{index}/{playerNum}")
 	public Space[] assign(@PathVariable String system, @PathVariable int index, @PathVariable int playerNum) {
-		if(counter<numPlayers) {
+		System.out.println(state.equals(State.SETUP));
+		if(state.equals(State.SETUP)) {
 			if(systems[index] !=null) {
 				return systems;
 			}
@@ -82,6 +83,9 @@ public class BaseController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/viewSystem/{index}")
 	public Space create(@PathVariable int index) {
+		for(Integer s : model.getBoard().get(index).getNeighborLocations()) {
+			System.out.println(s.intValue());
+		}
 		return model.getBoard().get(index);
 	}
 
@@ -100,6 +104,7 @@ public class BaseController {
 				board.add(s);
 			}
 			model.SystemSetup(board);
+			state = State.PLAY;
 		}
 		return systems;
 	}
@@ -108,7 +113,7 @@ public class BaseController {
 	public State getState() {
 		return this.state;
 	}
-	/*
+
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/setBoard")
 	public void setBoard() {
@@ -125,8 +130,9 @@ public class BaseController {
 			systems[i]= board.get(i);
 		}
 		model.SystemSetup(board);
+		state = State.PLAY;
 		}
-*/
+
 	private Race createRace(String race, Color color) {
 		if(race.equals("Barony"))
 			return new Barony(color);

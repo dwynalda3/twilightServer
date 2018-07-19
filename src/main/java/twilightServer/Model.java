@@ -12,104 +12,106 @@ public class Model {
 	private ArrayList<Planet> planets;
 	public ArrayList<ArrayList<Space>> playerSystems = new ArrayList<ArrayList<Space>>();
 	private ArrayList<Player> players = new ArrayList<Player>() ;
-	
+
 	public Model() {
 	}
 	public void SystemSetup(ArrayList<Space> systems) {
-		board = systems;
-		if(systems.size()!=37) {
-			//System.out.println("Mecatol Rex not added");
+		if(board == null) {
+			board = systems;
+			if(systems.size()!=37) {
+				//System.out.println("Mecatol Rex not added");
+			}
+			createNeighbors(0,1);
+			createNeighbors(0,4);
+			createNeighbors(0,5);
+			createNeighbors(1,2);
+			createNeighbors(1,5);
+			createNeighbors(1,6);
+			createNeighbors(2,3);
+			createNeighbors(2,6);
+			createNeighbors(2,7);
+			createNeighbors(3,7);
+			createNeighbors(3,8);
+			createNeighbors(4,5);
+			createNeighbors(4,9);
+			createNeighbors(4,10);
+			createNeighbors(5,6);
+			createNeighbors(5,10);
+			createNeighbors(5,11);
+			createNeighbors(6,7);
+			createNeighbors(6,11);
+			createNeighbors(6,12);
+			createNeighbors(7,8);
+			createNeighbors(7,12);
+			createNeighbors(7,13);
+			createNeighbors(8,13);
+			createNeighbors(8,14);
+			createNeighbors(9,10);
+			createNeighbors(9,15);
+			createNeighbors(9,16);
+			createNeighbors(10,11);
+			createNeighbors(10,16);
+			createNeighbors(10,17);
+			createNeighbors(11,12);
+			createNeighbors(11,17);
+			createNeighbors(11,18);
+			createNeighbors(12,13);
+			createNeighbors(12,18);
+			createNeighbors(12,19);
+			createNeighbors(13,14);
+			createNeighbors(13,19);
+			createNeighbors(13,20);
+			createNeighbors(14,20);
+			createNeighbors(14,21);		
+			createNeighbors(15,16);
+			createNeighbors(15,22);
+			createNeighbors(16,17);
+			createNeighbors(16,22);
+			createNeighbors(16,23);
+			createNeighbors(17,18);
+			createNeighbors(17,23);
+			createNeighbors(17,24);
+			createNeighbors(18,19);
+			createNeighbors(18,24);
+			createNeighbors(18,25);
+			createNeighbors(19,20);
+			createNeighbors(19,25);
+			createNeighbors(19,26);
+			createNeighbors(20,21);
+			createNeighbors(20,26);
+			createNeighbors(20,27);
+			createNeighbors(21,27);
+			createNeighbors(22,23);
+			createNeighbors(22,28);
+			createNeighbors(23,24);
+			createNeighbors(23,28);
+			createNeighbors(23,29);
+			createNeighbors(24,25);
+			createNeighbors(24,29);
+			createNeighbors(24,30);
+			createNeighbors(25,26);
+			createNeighbors(25,30);
+			createNeighbors(25,31);
+			createNeighbors(26,27);
+			createNeighbors(26,31);
+			createNeighbors(26,32);
+			createNeighbors(27,32);
+			createNeighbors(28,29);
+			createNeighbors(28,33);
+			createNeighbors(29,30);
+			createNeighbors(29,33);
+			createNeighbors(29,34);
+			createNeighbors(30,31);
+			createNeighbors(30,34);
+			createNeighbors(30,35);
+			createNeighbors(31,32);
+			createNeighbors(31,35);
+			createNeighbors(31,36);
+			createNeighbors(32,36);
+			createNeighbors(33,34);
+			createNeighbors(34,35);
+			createNeighbors(35,36);
 		}
-		createNeighbors(0,1);
-		createNeighbors(0,4);
-		createNeighbors(0,5);
-		createNeighbors(1,2);
-		createNeighbors(1,5);
-		createNeighbors(1,6);
-		createNeighbors(2,3);
-		createNeighbors(2,6);
-		createNeighbors(2,7);
-		createNeighbors(3,7);
-		createNeighbors(3,8);
-		createNeighbors(4,5);
-		createNeighbors(4,9);
-		createNeighbors(4,10);
-		createNeighbors(5,6);
-		createNeighbors(5,10);
-		createNeighbors(5,11);
-		createNeighbors(6,7);
-		createNeighbors(6,11);
-		createNeighbors(6,12);
-		createNeighbors(7,8);
-		createNeighbors(7,12);
-		createNeighbors(7,13);
-		createNeighbors(8,13);
-		createNeighbors(8,14);
-		createNeighbors(9,10);
-		createNeighbors(9,15);
-		createNeighbors(9,16);
-		createNeighbors(10,11);
-		createNeighbors(10,16);
-		createNeighbors(10,17);
-		createNeighbors(11,12);
-		createNeighbors(11,17);
-		createNeighbors(11,18);
-		createNeighbors(12,13);
-		createNeighbors(12,18);
-		createNeighbors(12,19);
-		createNeighbors(13,14);
-		createNeighbors(13,19);
-		createNeighbors(13,20);
-		createNeighbors(14,20);
-		createNeighbors(14,21);		
-		createNeighbors(15,16);
-		createNeighbors(15,22);
-		createNeighbors(16,17);
-		createNeighbors(16,22);
-		createNeighbors(16,23);
-		createNeighbors(17,18);
-		createNeighbors(17,23);
-		createNeighbors(17,24);
-		createNeighbors(18,19);
-		createNeighbors(18,24);
-		createNeighbors(18,25);
-		createNeighbors(19,20);
-		createNeighbors(19,25);
-		createNeighbors(19,26);
-		createNeighbors(20,21);
-		createNeighbors(20,26);
-		createNeighbors(20,27);
-		createNeighbors(21,27);
-		createNeighbors(22,23);
-		createNeighbors(22,28);
-		createNeighbors(23,24);
-		createNeighbors(23,28);
-		createNeighbors(23,29);
-		createNeighbors(24,25);
-		createNeighbors(24,29);
-		createNeighbors(24,30);
-		createNeighbors(25,26);
-		createNeighbors(25,30);
-		createNeighbors(25,31);
-		createNeighbors(26,27);
-		createNeighbors(26,31);
-		createNeighbors(26,32);
-		createNeighbors(27,32);
-		createNeighbors(28,29);
-		createNeighbors(28,33);
-		createNeighbors(29,30);
-		createNeighbors(29,33);
-		createNeighbors(29,34);
-		createNeighbors(30,31);
-		createNeighbors(30,34);
-		createNeighbors(30,35);
-		createNeighbors(31,32);
-		createNeighbors(31,35);
-		createNeighbors(31,36);
-		createNeighbors(32,36);
-		createNeighbors(33,34);
-		createNeighbors(34,35);
-		createNeighbors(35,36);
 	}
 	public void PlayerSetup(int numPlayers) {
 		PlanetSetup(numPlayers);
@@ -119,7 +121,7 @@ public class Model {
 			p.setSystems(playerSystems.get(i));
 			players.add(p);
 		}
-		
+
 	}
 	private void PlanetSetup(int numPlayers){
 		if(numPlayers != 3 && numPlayers != 4) {
@@ -315,10 +317,10 @@ public class Model {
 		}
 	}
 	private void createNeighbors(int index1, int index2) {
-		if(index1 == 17 || index2 == 17)
-		System.out.println(board.get(index1) + " + " + board.get(index2));
 		board.get(index1).addNeighbor(board.get(index2));
 		board.get(index2).addNeighbor(board.get(index1));
+		board.get(index1).addNeighborLocation(index2);
+		board.get(index2).addNeighborLocation(index1);
 	}
 	public ArrayList<Space> getBoard() {
 		return board;
@@ -329,7 +331,10 @@ public class Model {
 	public Player getPlayer(int number) {
 		return players.get(number);
 	}
-	
+	public void setPlayer(int id, Player player) {
+		players.set(id, player);		
+	}
+
 
 }
 

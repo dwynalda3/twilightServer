@@ -1,6 +1,7 @@
 package twilightServer;
 
 public class PDS implements IUnit{
+	private String type = "PDS";
 	private int numSpaceCannons=1;
 	private Color owner;
 	private int combat = 6; 
@@ -25,7 +26,7 @@ public class PDS implements IUnit{
 
 	@Override
 	public String type() {
-		return "PDS";
+		return type;
 	}
 
 	@Override

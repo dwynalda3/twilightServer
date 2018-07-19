@@ -1,6 +1,7 @@
 package twilightServer;
 
 public class Destroyer implements IShip {
+	private String type = "Destroyer";
 	private Color owner;
 	private int combat = 9;
 	private int movement = 2;
@@ -13,7 +14,7 @@ public class Destroyer implements IShip {
 
 	@Override
 	public String type() {
-		return "Destroyer";
+		return type;
 	}
 
 	@Override

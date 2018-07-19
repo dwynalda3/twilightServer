@@ -1,6 +1,7 @@
 package twilightServer;
 
 public class Spacedock implements IUnit {
+	private String type = "Spacedock";
 	private int productionModifier = 2;
 	private int combat = -1;
 	private Color owner;
@@ -18,7 +19,7 @@ public class Spacedock implements IUnit {
 
 	@Override
 	public String type() {
-		return "Spacedock";
+		return type;
 	}
 
 	@Override
